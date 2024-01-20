@@ -1,4 +1,4 @@
-# Frontend For The Search Engine API
+# The Search Engine Project Frontend
 
 ## Description
 This is the frontend component of a search engine project.
