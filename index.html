@@ -185,9 +185,24 @@
             resultsContainer.appendChild(resultDiv);
         }
 
-        document.querySelector("input[name='search']").addEventListener("keyup", function (e) {
+        var searchInput = document.querySelector("input[name='search']");
+        var searchTimer;
+
+        searchInput.addEventListener("input", function (e) {
+            clearTimeout(searchTimer);
+
+            searchTimer = setTimeout(function () {
+                if (searchInput.value.trim() !== "") {
+                    search(e);
+                }
+            }, 500);
+        });
+
+        searchInput.addEventListener("keyup", function (e) {
             if (e.key == "Enter" || e.key == " ") {
-                if (this.value.trim() !== "") {
+                clearTimeout(searchTimer);
+
+                if (searchInput.value.trim() !== "") {
                     search(e);
                 }
             }
